@@ -1,5 +1,6 @@
 package com.matheus.email_sender.model;
 
+import com.matheus.email_sender.dto.hotel.HotelCreateDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +26,9 @@ public class Hotel {
     private List<Reservation> reservations=new ArrayList<>();
 
 
+    public Hotel(HotelCreateDto hotelCreateDto) {
+        this.name=hotelCreateDto.getName();
+        this.cep=hotelCreateDto.getCep();
+        this.city=hotelCreateDto.getCity();
+    }
 }

@@ -1,5 +1,6 @@
 package com.matheus.email_sender.model;
 
+import com.matheus.email_sender.dto.reservation.ReservationCreateDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,5 +21,12 @@ public class Reservation {
     private Hotel hotel;
     private LocalDateTime date;
     private Client client;
+
+    public Reservation(LocalDateTime date,Hotel hotel,Client client){
+        this.hotel=hotel;
+        this.client=client;
+        this.date=date;
+
+    }
 
 }
