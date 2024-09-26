@@ -6,6 +6,7 @@ import com.matheus.email_sender.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<Client> createClient(ClientCreateDto clientCreateDto) {
+    public ResponseEntity<Client> createClient(@RequestBody @Validated ClientCreateDto clientCreateDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(clientService.createClient(clientCreateDto));
     }
 
