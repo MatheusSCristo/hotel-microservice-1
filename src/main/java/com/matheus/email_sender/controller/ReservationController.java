@@ -1,6 +1,7 @@
 package com.matheus.email_sender.controller;
 
 import com.matheus.email_sender.dto.reservation.ReservationCreateDto;
+import com.matheus.email_sender.dto.reservation.ReservationResponseDto;
 import com.matheus.email_sender.model.Hotel;
 import com.matheus.email_sender.model.Reservation;
 import com.matheus.email_sender.service.ReservationService;
@@ -21,8 +22,8 @@ public class ReservationController {
     }
 
     @PostMapping
-    public ResponseEntity<Reservation> createReservation(@RequestBody ReservationCreateDto reservationCreateDto){
-        return ResponseEntity.ok().body(reservationService.createReservation(reservationCreateDto));
+    public ResponseEntity<ReservationResponseDto> createReservation(@RequestBody ReservationCreateDto reservationCreateDto){
+        return ResponseEntity.ok().body(new ReservationResponseDto(reservationService.createReservation(reservationCreateDto)));
     }
 
 }

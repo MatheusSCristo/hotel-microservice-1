@@ -20,6 +20,7 @@ public class Reservation {
     @ManyToOne
     private Hotel hotel;
     private LocalDateTime date;
+    @ManyToOne
     private Client client;
 
     public Reservation(LocalDateTime date,Hotel hotel,Client client){
