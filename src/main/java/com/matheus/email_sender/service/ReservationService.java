@@ -20,11 +20,17 @@ public class ReservationService {
     @Autowired
     private HotelService hotelService;
 
+    @Autowired
+    private MessageService messageService;
+
     public Reservation createReservation(ReservationCreateDto reservationCreateDto) {
         Hotel hotel = hotelService.findHotelById(reservationCreateDto.getHotelId());
         Client client = clientService.findClientById(reservationCreateDto.getClientId());
         Reservation reservation = new Reservation(reservationCreateDto.getDate(), hotel, client);
-        return reservationRepository.save(reservation);
+        Reservation res=reservationRepository.save(reservation);
+        messageService.sendMessageOnReservation(res);
+
+        return res;
     }
 
     public Reservation findReservationById(String reservationId){
